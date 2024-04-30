@@ -1,0 +1,14 @@
+# Ignore everything
+*
+# But not these files...
+
+! fifo_rows_redo2.ipynb
+! fifo_rows_redo.ipynb
+! fifo_rows_redo_cleanCopy.ipynb
+! fifo_rows_redo2-Copy1.ipynb
+! fifo_new.csv
+! fifo_new.xlsx
+! flowchart2.pdf
+! yEd_flowchart.graphml
+! README.md
+! .gitignore
