@@ -1,0 +1,53 @@
+Markdown Notes:
+
+
+Using fifo_rows_redo2.ipynb,    commit at 4:45 b4 checkout older version, branch fifo_redo3a
+
+At end of loop 1:
+
+    All's good with 1050, 1000, and 100
+    
+    Notes: 
+    
+        1050: at the end of loop 1:
+        
+            sales_record:  has 1 record for buy and sell.  1000 / 1000 and 50 cf in sold_pps & sold_basis.  Flag == TRUE
+            
+            buys /sells - Buys record 1 with 50, record 2 unchanged at 1000. Sells record 1 with 50, record 2 gone, record 3 950 
+            
+            At end of loop 2:
+            
+            sale_records:  top record(newest) shows 50 buy / 50 sells, no c/f, TRUE/TRUE, and type = CFCF
+            
+            buys/sells - buys record 1 gone, correct record 2 on top with 1000, sells record 1 is gone, top record, 2 is 950. Perfect.
+            
+            
+            
+        
+        1000: at end of loop 1:
+        
+            sales_record:  buy / sell 1000 / 1000.  No c/f, no flag / true_false
+   
+             buys / sells - looks good.  Record # 1 & 2 deleted and, 3 & 4 are ready for next loop
+             
+             At end of loop 2:
+             
+             sale_records:  new record 1000 / 1000.  No c/f.  NO TRUE.   Perfect
+             
+             buys/sells - buys/sells both have 2 rows of deleted records.  Now showing correctly:  indexes 5/6
+             
+             
+        100:
+        
+            sale_records: buy /sell  100 / 100.  900 c/f in sold_pps & sold_basis.  true_false == TRUE, flag == FALSE
+
+            buys/sells - look good.  Buys record 1 gone, Record 2 at top.  Sells, record 1 shows 900, record 2 is 1000.  Good
+            
+            loop 2
+            
+            sale_records :  new top row - 900 buy / 900 sells.  100 buys c/f (3 corect values in sold_vars), flag == TRUE, true_false == FALSE. Perfect
+            
+            buy/sells:  row1: buys 100 TRUE, type: Buy CF, Index 3 //  sells 100 TRUE, Sell CF,  Index 3,
+                        row2:  buys, index 5 w/ 1000, good.   /// sells index 4 w 900.  
+                        
+            
