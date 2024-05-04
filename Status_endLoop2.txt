@@ -51,3 +51,30 @@ At end of loop 1:
                         row2:  buys, index 5 w/ 1000, good.   /// sells index 4 w 900.  
                         
             
+
+All loops:
+
+There seems to be issue around loop 6.  This likely means there is something about the input data that changed. 
+The processing of buy/sell data has a default assumption that the data is arranged as buy/sell.  If the input data
+changes from buy/sell, it most likely breaks the successful processing.  
+
+Potential Solution:
+
+Review the input data for any change(s), not the index/row number(s), then stop the if(i = xxx at that / those rows.
+
+Know: The way I arranged the input data was not the same as shown on the Etrade year end, 1099.   I arranged buy/sell
+so long as there was enough buys to cover the next sell.  T/F, in row 12 of the input data there are a series of buys
+from row 12 to row 16 with a combined sum of 7800.  These 7800 are enought to exceed the next sell of 6000.
+
+Then there is a std buy/sell transaction.
+
+Then there are a series of 3 sells, followed by 2 buys,  things continue being not in buy/sell format from row 24 onward.
+
+Note:  These big changes starting at row 12 will almost certainly require reviewing other methods cost basis beside FIFO.
+
+
+
+Exploring the data:  
+
+sale_record - loops 1-6 look okay.  But in loop 7, the buy$quan and sell$quan are not looking right.  There s/b 50 / 50 in row
+            7, but for some reason, the 50 was added to the next values of buy and sell
